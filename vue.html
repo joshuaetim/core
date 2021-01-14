@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <div v-for="(detail, title) in details">
+            {{capitalizer(title)}}: {{detail}}
+        </div>
+    </div>
+    
+    <script>
+        var vm = new Vue({
+            el: '#demo',
+            data: {
+                details: {
+                    'name': 'Joshua',
+                    'worth': '$15000'
+                }
+            },
+            methods: {
+                capitalizer: function(word){
+                    return _.capitalize(word)
+                }
+            }
+
+        })
+    </script>
+</body>
+</html> 
