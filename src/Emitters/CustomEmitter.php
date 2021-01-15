@@ -7,8 +7,12 @@ namespace BareBone\Emitters;
 use Psr\Http\Message\ResponseInterface;
 use Narrowspark\HttpEmitter\AbstractSapiEmitter;
 
-class CustomEmitter implements AbstractSapiEmitter
+class CustomEmitter extends AbstractSapiEmitter
 {
+    /**
+     * This class acts as a parent class calling either SapiEmitter or SapiStreamEmitter
+     */
+
     private $emitter;
 
     public function __construct(AbstractSapiEmitter $emitter)
@@ -16,8 +20,8 @@ class CustomEmitter implements AbstractSapiEmitter
         $this->emitter = $emitter;
     }
 
-    public function emit(ResponseInterface $response): bool
+    public function emit(ResponseInterface $response): void
     {
-        return $this->emitter->emit($response);
+        $this->emitter->emit($response);
     }
 }

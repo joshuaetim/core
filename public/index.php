@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-use Relay\Relay;
 use function DI\get;
 use function DI\create;
 use BareBone\HelloWorld;
 use DI\ContainerBuilder;
-use Middlewares\FastRoute;
-use FastRoute\RouteCollector;
 use Laminas\Diactoros\Response;
 use Middlewares\RequestHandler;
-use function FastRoute\simpleDispatcher;
+use Psr\Http\Message\ResponseInterface;
 use Laminas\Diactoros\ServerRequestFactory;
-use Narrowspark\HttpEmitter\SapiEmitter;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
+use Laminas\HttpHandlerRunner\Emitter\SapiStreamEmitter;
 
 require_once dirname(__DIR__).'/vendor/autoload.php';
 
@@ -32,19 +32,34 @@ $containerBuilder->addDefinitions([
 
 $container = $containerBuilder->build();
 
-$routes = simpleDispatcher(function(RouteCollector $r){
-    $r->get('/hello', HelloWorld::class);
+$request = ServerRequestFactory::fromGlobals();
+
+// print_r($request->getHeaders());
+
+// return;
+
+$router = new League\Route\Router;
+$router->map('GET', '/', function(ServerRequestInterface $request){
+    $response = new Response;
+    $response->getBody()->write("<html><head></head><body><h2>Hello</h2></body></html>");
+    return $response;
 });
+$router->map('GET', '/hello', $container->get(HelloWorld::class));
 
-$middlewareQueue[] = new FastRoute($routes);
-$middlewareQueue[] = new RequestHandler($container);
+$response = $router->dispatch($request);
 
-$requestHandler = new Relay($middlewareQueue);
-$response = $requestHandler->handle(ServerRequestFactory::fromGlobals());
-
-// emit using SapiEmitter
-$emitter = new SapiEmitter();
-return $emitter->emit($response);
+// emit using conditions
+if(! $response->hasHeader('Content-Range') 
+    && ! $response->hasHeader('Content-Disposition')){
+        // less overhead, can use the normal stream
+        $emitter = new SapiEmitter;
+        return $emitter->emit($response);
+    }
+else{
+    // more overhead, needs the SapiStreamEmitter 
+    $emitter = new SapiStreamEmitter;
+    return $emitter->emit($response);
+}
 
 // $helloWorld = $container->get(\BareBone\HelloWorld::class);
 // $helloWorld();

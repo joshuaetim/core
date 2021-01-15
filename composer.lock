@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0f89ac5d9fff3639319fea1bd16b36b",
+    "content-hash": "6a016d663dc47842db3076db14c60e4a",
     "packages": [
         {
             "name": "laminas/laminas-diactoros",
@@ -93,6 +93,61 @@
             "time": "2020-11-18T18:39:28+00:00"
         },
         {
+            "name": "laminas/laminas-httphandlerrunner",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-httphandlerrunner.git",
+                "reference": "e8f850bd12cb82b268ff235fe74b2df906e8bfe8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-httphandlerrunner/zipball/e8f850bd12cb82b268ff235fe74b2df906e8bfe8",
+                "reference": "e8f850bd12cb82b268ff235fe74b2df906e8bfe8",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-zendframework-bridge": "^1.0",
+                "php": "^7.3 || ~8.0.0",
+                "psr/http-message": "^1.0",
+                "psr/http-message-implementation": "^1.0",
+                "psr/http-server-handler": "^1.0"
+            },
+            "replace": {
+                "zendframework/zend-httphandlerrunner": "^1.1.0"
+            },
+            "require-dev": {
+                "laminas/laminas-coding-standard": "~1.0.0",
+                "laminas/laminas-diactoros": "^2.1.1",
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "laminas": {
+                    "config-provider": "Laminas\\HttpHandlerRunner\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\HttpHandlerRunner\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Execute PSR-15 RequestHandlerInterface instances and emit responses they generate.",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "components",
+                "laminas",
+                "mezzio",
+                "psr-15",
+                "psr-7"
+            ],
+            "time": "2020-11-19T17:12:59+00:00"
+        },
+        {
             "name": "laminas/laminas-zendframework-bridge",
             "version": "1.1.1",
             "source": {
@@ -141,205 +196,51 @@
             "time": "2020-09-14T14:23:00+00:00"
         },
         {
-            "name": "middlewares/fast-route",
-            "version": "v2.0.1",
+            "name": "league/route",
+            "version": "4.5.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/middlewares/fast-route.git",
-                "reference": "01d992358dc6f3a266576bddd9347a04204e7e37"
+                "url": "https://github.com/thephpleague/route.git",
+                "reference": "5ccce47a0120c9036d02a805237b942210993320"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/fast-route/zipball/01d992358dc6f3a266576bddd9347a04204e7e37",
-                "reference": "01d992358dc6f3a266576bddd9347a04204e7e37",
+                "url": "https://api.github.com/repos/thephpleague/route/zipball/5ccce47a0120c9036d02a805237b942210993320",
+                "reference": "5ccce47a0120c9036d02a805237b942210993320",
                 "shasum": ""
             },
             "require": {
-                "middlewares/utils": "^3.0",
                 "nikic/fast-route": "^1.0",
-                "php": "^7.2 || ^8.0",
-                "psr/http-server-middleware": "^1.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0",
-                "laminas/laminas-diactoros": "^2.3",
-                "oscarotero/php-cs-fixer-config": "^1.0",
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^8|^9",
-                "squizlabs/php_codesniffer": "^3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Middlewares\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Middleware to use FastRoute",
-            "homepage": "https://github.com/middlewares/fast-route",
-            "keywords": [
-                "FastRoute",
-                "fast-route",
-                "http",
-                "middleware",
-                "psr-15",
-                "psr-7",
-                "router",
-                "server"
-            ],
-            "time": "2020-12-02T00:05:59+00:00"
-        },
-        {
-            "name": "middlewares/request-handler",
-            "version": "v2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/middlewares/request-handler.git",
-                "reference": "e5563184b4c9eab81ecb58c6ef530516559e8488"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/request-handler/zipball/e5563184b4c9eab81ecb58c6ef530516559e8488",
-                "reference": "e5563184b4c9eab81ecb58c6ef530516559e8488",
-                "shasum": ""
-            },
-            "require": {
-                "middlewares/utils": "^3.0",
-                "php": "^7.2 || ^8.0",
-                "psr/container": "^1.0",
-                "psr/http-server-middleware": "^1.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0",
-                "laminas/laminas-diactoros": "^2.3",
-                "oscarotero/php-cs-fixer-config": "^1.0",
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^8|^9",
-                "squizlabs/php_codesniffer": "^3.0"
-            },
-            "suggest": {
-                "psr/container": "Can be used to resolve handlers automatically"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Middlewares\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Middleware to execute request handlers",
-            "homepage": "https://github.com/middlewares/request-handler",
-            "keywords": [
-                "controller",
-                "handler",
-                "http",
-                "invoke",
-                "middleware",
-                "psr-15",
-                "psr-7",
-                "request",
-                "server"
-            ],
-            "time": "2020-12-04T00:14:39+00:00"
-        },
-        {
-            "name": "middlewares/utils",
-            "version": "v3.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/middlewares/utils.git",
-                "reference": "a9ef1e5365020ead0ae343b95602bd877a9bf852"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/utils/zipball/a9ef1e5365020ead0ae343b95602bd877a9bf852",
-                "reference": "a9ef1e5365020ead0ae343b95602bd877a9bf852",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2 || ^8.0",
+                "php": ">=7.1",
                 "psr/container": "^1.0",
                 "psr/http-factory": "^1.0",
                 "psr/http-message": "^1.0",
+                "psr/http-server-handler": "^1.0",
                 "psr/http-server-middleware": "^1.0"
             },
+            "replace": {
+                "orno/http": "~1.0",
+                "orno/route": "~1.0"
+            },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^v2.16",
-                "guzzlehttp/psr7": "dev-master",
-                "laminas/laminas-diactoros": "^2.4",
-                "nyholm/psr7": "^1.0",
-                "oscarotero/php-cs-fixer-config": "^1.0",
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^8|^9",
-                "slim/psr7": "~0.3",
-                "squizlabs/php_codesniffer": "^3.5",
-                "sunrise/http-message": "^1.0",
-                "sunrise/http-server-request": "^1.0",
-                "sunrise/stream": "^1.0.15",
-                "sunrise/uri": "^1.0.15"
+                "phpstan/phpstan": "^0.10.3",
+                "phpstan/phpstan-phpunit": "^0.10.0",
+                "phpunit/phpunit": "^7.0",
+                "squizlabs/php_codesniffer": "^3.3"
             },
             "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Middlewares\\Utils\\": "src/"
+            "extra": {
+                "branch-alias": {
+                    "dev-4.x": "4.x-dev",
+                    "dev-3.x": "3.x-dev",
+                    "dev-2.x": "2.x-dev",
+                    "dev-1.x": "1.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Common utils for PSR-15 middleware packages",
-            "homepage": "https://github.com/middlewares/utils",
-            "keywords": [
-                "PSR-11",
-                "http",
-                "middleware",
-                "psr-15",
-                "psr-17",
-                "psr-7"
-            ],
-            "time": "2020-11-30T20:07:15+00:00"
-        },
-        {
-            "name": "narrowspark/http-emitter",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/narrowspark/http-emitter.git",
-                "reference": "1e51e1ebe58bd2ed0b7a4cfeda7b7aab35b59329"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/narrowspark/http-emitter/zipball/1e51e1ebe58bd2ed0b7a4cfeda7b7aab35b59329",
-                "reference": "1e51e1ebe58bd2ed0b7a4cfeda7b7aab35b59329",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2",
-                "psr/http-message": "^1.0"
-            },
-            "provide": {
-                "psr/http-message-implementation": "^1.0"
-            },
-            "require-dev": {
-                "narrowspark/coding-standard": "^3.0.0",
-                "phpunit/phpunit": "^8.3.4",
-                "zendframework/zend-diactoros": "^1.8.0 || ^2.0.0"
-            },
-            "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Narrowspark\\HttpEmitter\\": "src/"
-                },
-                "exclude-from-classmap": [
-                    "tests/"
-                ]
+                    "League\\Route\\": "src"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -347,21 +248,24 @@
             ],
             "authors": [
                 {
-                    "name": "Daniel Bannert",
-                    "email": "d.bannert@anolilab.de",
-                    "homepage": "http://www.anolilab.de",
+                    "name": "Phil Bennett",
+                    "email": "philipobenito@gmail.com",
                     "role": "Developer"
                 }
             ],
-            "description": "Emitting psr-7 responses.",
+            "description": "Fast routing and dispatch component including PSR-15 middleware, built on top of FastRoute.",
+            "homepage": "https://github.com/thephpleague/route",
             "keywords": [
-                "emitter",
-                "http",
-                "narrowspark",
+                "dispatcher",
+                "league",
+                "psr-15",
                 "psr-7",
-                "sapi"
+                "psr15",
+                "psr7",
+                "route",
+                "router"
             ],
-            "time": "2019-09-12T21:29:46+00:00"
+            "time": "2020-05-18T07:34:43+00:00"
         },
         {
             "name": "nikic/fast-route",
